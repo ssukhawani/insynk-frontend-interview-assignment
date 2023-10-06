@@ -42,6 +42,8 @@ B) Next started with designing the product
  3) Identified relation between all the entities and defined the cadinality
      - user - expenses (1:M)
      - expenses - categories (M:1)
+     - user - categories (1:M)
+ 
 
  4) Finalised the schema 
 
@@ -58,7 +60,10 @@ create table categories (
     name varchar(50) not null,
     is_main bool default false,
 	created_at timestamp default current_timestamp,
-    updated_at timestamp default current_timestamp on update current_timestamp
+    updated_at timestamp default current_timestamp on update current_timestamp,
+    user_id int not null,
+    foreign key (user_id) references user(user_id),
+    index user_idx (user_id)
 );
 
 create table expenses (
@@ -80,7 +85,6 @@ create table expenses (
    ```
   
 - ( Time taken - 1:30 hrs - 2:00 hrs)
-
 
 
 C) Next step was to create the rest apis satisfying all the requirements so i went through all the requirements and noted the required api endpoints.
@@ -131,3 +135,19 @@ D) Decided to go with Python Django Rest Framwork for creting quick apis
  - Added djoser authentication layer for quick sign up & login flow
  - Created all the models as per the sql schema, using viewsets completed all the endpoints & api-routing.
 - ( Time taken - 3:30 hrs - 4:00 hrs )
+
+E) Again went through all the requirements & cross checked if all conditions are satisfying or not , i realised i have to explistly handle categories respective to user so added relation in 
+
+- user - categories (1:M)
+
+as well as updated categories schema with user foreign key.
+
+One more challenge i can see was getting the monthly expenses for the user with respecive categories that they either spent or earned.
+
+To tackle this issue i just have ordered the expenses based on expense date & in frontend i can do some transformation & calculate the commulative sum to get desired list.
+
+Finally i have conclude the backend rest apis & secured the all endpoints so that only owner of the object can access the endpoints & objects that they have created.
+
+In short Admin user will have access to all the endpoints. Users will have access to  only expenses & categories that they have created.
+
+- ( Time taken - 3:00 hrs - 4:00 hrs )
