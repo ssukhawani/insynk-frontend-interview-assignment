@@ -80,3 +80,23 @@ create table expenses (
    ```
   
 - ( Time taken - 1:30 hrs - 2:00 hrs)
+
+
+
+C) Next step was to create the rest apis satisfying all the requirements so i went through all the requirements and noted the required api endpoints.
+   1) user 
+     - user login 
+     - user signup
+     - user profile
+   2) categories
+     - category list
+     - create category
+     - update category
+     - retrieve category
+     - delete category
+   3) expenses
+     - list all expenses (grouped by months & monthly total expense)
+     - create expense
+     - update expense
+     - delete expense
+- ( Time taken - 30 mins )
