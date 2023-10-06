@@ -100,3 +100,34 @@ C) Next step was to create the rest apis satisfying all the requirements so i we
      - update expense
      - delete expense
 - ( Time taken - 30 mins )
+
+D) Decided to go with Python Django Rest Framwork for creting quick apis 
+  - Django project setup
+
+```python
+├── expense_tracker_backend/
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   ├── wsgi.py
+│   │   └── urls.py
+│   ├── users/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   └── urls.py
+│   ├── categories/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   └── urls.py
+│   ├── expenses/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   └── urls.py
+ ```
+ - Created postgres database server locally and added connection to django project
+ - Added djoser authentication layer for quick sign up & login flow
+ - Created all the models as per the sql schema, using viewsets completed all the endpoints & api-routing.
+- ( Time taken - 3:30 hrs - 4:00 hrs )
