@@ -1,10 +1,10 @@
 .button {
     width: 100%;
     height: 50px;
-    background-color: #4B97F2;
+    background-color: black;
     border: none;
     color: white;
-    font-size: larger;
-    font-weight: 600;
+    font-size: medium;
+    font-weight: 500;
     cursor: pointer;
 }

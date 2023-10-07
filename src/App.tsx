@@ -8,13 +8,17 @@ import {
 } from 'react-router-dom'
 import Layout from './components/Layout'
 import PublicPage from './components/Publicpage'
-import ProtectedPage from './components/ProtectedPage'
+import ExpenseTracker from './components/ExpenseTracker'
 // import { fakeAuthProvider } from './interfaces/auth'
 import LoginPage from './components/LoginPage'
 import SignupPage from './components/SignupPage'
 import { getLocalStorageItem } from './utility/localStorage'
 import { setupInterceptors } from './interceptor/interceptors'
 import instance from './interceptor/axiosInstance'
+
+import { Bounce, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Categories from './components/Categories'
 
 const router = createBrowserRouter([
   {
@@ -42,7 +46,12 @@ const router = createBrowserRouter([
       {
         path: 'expense-tracker',
         loader: protectedLoader,
-        Component: ProtectedPage
+        Component: ExpenseTracker
+      },
+      {
+        path: 'categories',
+        loader: protectedLoader,
+        Component: Categories
       }
     ]
   }
@@ -75,7 +84,7 @@ const router = createBrowserRouter([
 //   return redirect(redirectTo ?? '/')
 // }
 
-async function mainPageLoader () {
+async function mainPageLoader() {
   const user: userInterface | null = getLocalStorageItem('user')
 
   if (user?.auth_token != null) {
@@ -107,6 +116,22 @@ function App() {
   return (
     <div className='App'>
       <RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} />
+      <ToastContainer
+        position='bottom-center'
+        autoClose={4000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Bounce}
+        style={{
+          width: 'fit-content'
+        }}
+        limit={3}
+      />
     </div>
   )
 }

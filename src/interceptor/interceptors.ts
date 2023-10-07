@@ -7,7 +7,9 @@ import axios, {
   type AxiosResponse,
   type AxiosRequestConfig
 } from 'axios'
-import { deleteLocalStorageItem } from '../utility/localStorage'
+import { deleteLocalStorageItem, getLocalStorageItem } from '../utility/localStorage'
+import { toast } from 'react-toastify'
+import { type UserDetails } from '../interfaces/auth'
 
 // For Make Log on Develop Mode
 const logOnDev = (message: string) => {
@@ -20,8 +22,12 @@ const logOnDev = (message: string) => {
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
   const { method, url } = config
   // Set Headers Here
+  const user: UserDetails | null = getLocalStorageItem('user') ?? null
+  if (user != null) {
+    config.headers.Authorization = `Token ${user.auth_token}`
+  }
+
   // Check Authentication Here
-  // Set Loading Start Here
   logOnDev(`🚀 [API] ${method?.toUpperCase()} ${url} | Request`)
 
   if (method === 'get') {
@@ -32,7 +38,6 @@ const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConf
 const onResponse = (response: AxiosResponse): AxiosResponse => {
   const { method, url } = response.config
   const { status } = response
-  // Set Loading End Here
   // Handle Response Data Here
   // Error Handling When Return Success with Error Code Here
   logOnDev(`🚀 [API] ${method?.toUpperCase()} ${url} | Response ${status}`)
@@ -52,26 +57,42 @@ const onErrorResponse = async (error: AxiosError | Error): Promise<AxiosError> =
       case 401: {
         // "Login required"
         logOnDev('🚨 Unauthorised')
+        toast.error('Unauthorised', {
+          toastId: 'unauthorized'
+        })
+        window.location.href = '/'
         break
       }
       case 403: {
         // "Permission denied"
         logOnDev('🚨 Permission denied')
+        toast.error('Permission denied', {
+          toastId: 'perm-denied'
+        })
         break
       }
       case 404: {
         // "Invalid request"
         logOnDev('🚨 Invalid request')
+        toast.error('Invalid request', {
+          toastId: 'invalid'
+        })
         break
       }
       case 500: {
         // "Server error"
         logOnDev('🚨 Server error')
+        toast.error('Server error', {
+          toastId: 'server-err'
+        })
         break
       }
       default: {
         // "Unknown error occurred"
         logOnDev('🚨 Unknown error occurred')
+        toast.error('Unknown error occurred', {
+          toastId: 'unknown-err'
+        })
         break
       }
     }

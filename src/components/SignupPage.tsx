@@ -5,6 +5,7 @@ import { signUp } from '../services/auth'
 import '../css/Signup.css'
 import Button from '../shared/Button'
 import { useNavigate } from 'react-router-dom'
+import CustomLink from '../shared/Link'
 
 interface AuthData {
   email: string
@@ -82,6 +83,7 @@ export default function SignupPage () {
           required
         />
         <Button type='submit' title={'Sign Up'} className='button' />
+        <CustomLink to={'/login'} prefixText={'Already have have an account?'} linkText='login here' />
       </form>
     </div>
   )

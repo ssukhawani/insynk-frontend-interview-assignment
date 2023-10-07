@@ -2,7 +2,11 @@ import React, { type FormEvent, useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { login } from '../services/auth'
 import Button from '../shared/Button'
-import { setLocalStorageItem } from '../utility/localStorage'
+import { setLocalStorageItem, updateLocalStorageItem } from '../utility/localStorage'
+import CustomLink from '../shared/Link'
+import { loggedInUserDetails } from '../services/user'
+import { toast } from 'react-toastify'
+import { toastMsg } from '../constants/toast-messages'
 
 interface AuthData {
   email: string
@@ -22,10 +26,16 @@ export default function LoginPage() {
     e.preventDefault()
 
     login(formData)
-      .then((response) => {
-        setLocalStorageItem('user', response.data)
-        navigate({
-          pathname: '/expense-tracker'
+      .then((tokenDetails) => {
+        setLocalStorageItem('user', { ...tokenDetails.data })
+        void loggedInUserDetails().then((userDetails) => {
+          updateLocalStorageItem('user', { ...userDetails.data })
+          toast.success(toastMsg.LOGIN_SUCCESS, {
+            toastId: 'login'
+          })
+          navigate({
+            pathname: '/expense-tracker'
+          })
         })
       })
       .catch((err) => {
@@ -68,6 +78,7 @@ export default function LoginPage() {
           required
         />
         <Button type='submit' title={'Login'} className='button' />
+        <CustomLink to={'/signup'} prefixText={'Don\'t have an account?'} linkText='Sign up here' />
       </form>
     </div>
   )

@@ -1,0 +1,23 @@
+.custom-signup-link {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #888;
+  }
+  
+  .custom-link {
+    text-decoration: none;
+    color: #673ab7;
+    margin-left: 10px;
+  }
+  
+  .custom-link:hover {
+    text-decoration: underline;
+    color: #333;
+  }
+  
+  .custom-link:focus {
+    outline: none;
+    text-decoration: underline;
+    color: #e91e63;
+  }
+  

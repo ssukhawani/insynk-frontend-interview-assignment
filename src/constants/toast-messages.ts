@@ -1,6 +1,6 @@
 export const toastMsg: Record<string, string> = {
   LOGIN_SUCCESS: 'Logged in successfully..!!',
-  LOGGED_OUT: 'Logged out..!!',
+  LOGGED_OUT: 'Logged you out..!!',
   INVALID_USERNAME_PASS: 'Invalid username or password',
   INVALID_RESPONSE: 'Invalid response..!!',
   SERVER_NOT_RESPONDING: 'Server not responding..!!',
