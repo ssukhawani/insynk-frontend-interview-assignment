@@ -30,9 +30,15 @@ const Navbar: React.FC<NavbarProps> = ({ height, button, title, backgroundColor,
 
   return (
     <div style={navbarStyle}>
-      <div>{((user?.auth_token) != null) && <UserProfileDropdown user={user}/>}</div>
+      <div>{user?.auth_token != null && <UserProfileDropdown user={user} />}</div>
       <h2 style={titleStyle}>{title}</h2>
-      <div>{button}</div>
+      <div
+        style={{
+          flex: '0.2'
+        }}
+      >
+        {button}
+      </div>
     </div>
   )
 }

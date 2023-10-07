@@ -46,12 +46,12 @@ const router = createBrowserRouter([
       {
         path: 'expense-tracker',
         loader: protectedLoader,
-        Component: ExpenseTracker
+        element: <ExpenseTracker/>
       },
       {
         path: 'categories',
         loader: protectedLoader,
-        Component: Categories
+        element: <Categories/>
       }
     ]
   }

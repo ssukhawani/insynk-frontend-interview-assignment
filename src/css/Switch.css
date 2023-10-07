@@ -1,0 +1,76 @@
+/* Switch.css */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    /* Adjust the width for the normal size */
+    height: 34px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(18px);
+}
+
+/* Small size style */
+.switch-small {
+    width: 40px;
+    /* Adjust the width for the small size */
+    height: 32px;
+    /* Adjust the height for the small size */
+}
+
+.switch-small .slider {
+    height: 22px;
+    /* Adjust the height for the small size */
+    border-radius: 16px;
+    /* Adjust the border radius for the small size */
+}
+
+.switch-small .slider:before {
+    height: 19.5px;
+    /* Adjust the height for the small size */
+    width: 20px;
+    /* Adjust the width for the small size */
+    left: 1px;
+    /* Adjust the position for the small size */
+    bottom: 1.5px;
+    /* Adjust the position for the small size */
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Button from '../shared/Button'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getLocalStorageItem } from '../utility/localStorage'
@@ -15,7 +15,7 @@ export default function ExpenseTracker() {
 
   const styleToApply = location.pathname === '/expense-tracker' ? activeStyle : normalStyle
 
-  useEffect(() => {
+  useMemo(() => {
     async function fetchData() {
       const storedUser: UserDetails | null = getLocalStorageItem('user')
       if (storedUser != null) {
@@ -27,7 +27,10 @@ export default function ExpenseTracker() {
         }
       }
     }
-    void fetchData()
+    if (location.pathname === '/expense-tracker') {
+      void fetchData()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   console.log(expenses, 'expenses')
