@@ -16,7 +16,7 @@ interface AuthData {
   last_name: string
 }
 
-export default function SignupPage () {
+export default function SignupPage() {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState<AuthData>({
@@ -43,6 +43,24 @@ export default function SignupPage () {
         })
       })
       .catch((err) => {
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        if (err?.response) {
+          Object.entries(err.response.data).forEach(([key, value]: [string, any]) => {
+            if (Array.isArray(value)) {
+              value.forEach((error: string) => {
+                toast.error(error, {
+                  toastId: key
+                })
+              })
+            } else {
+              if (key === 'detail') {
+                toast.error(value, {
+                  toastId: key
+                })
+              }
+            }
+          })
+        }
         console.error(err)
       })
   }
@@ -91,7 +109,11 @@ export default function SignupPage () {
           required
         />
         <Button type='submit' title={'Sign Up'} className='button' />
-        <CustomLink to={'/login'} prefixText={'Already have have an account?'} linkText='login here' />
+        <CustomLink
+          to={'/login'}
+          prefixText={'Already have have an account?'}
+          linkText='login here'
+        />
       </form>
     </div>
   )

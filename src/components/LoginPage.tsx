@@ -26,9 +26,9 @@ export default function LoginPage() {
     e.preventDefault()
 
     login(formData)
-      .then((tokenDetails) => {
+      .then((tokenDetails: { data: any }) => {
         setLocalStorageItem('user', { ...tokenDetails.data })
-        void loggedInUserDetails().then((userDetails) => {
+        void loggedInUserDetails().then((userDetails: { data: any }) => {
           updateLocalStorageItem('user', { ...userDetails.data })
           toast.success(toastMsg.LOGIN_SUCCESS, {
             toastId: 'login'
@@ -38,7 +38,25 @@ export default function LoginPage() {
           })
         })
       })
-      .catch((err) => {
+      .catch((err: any) => {
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        if (err?.response) {
+          Object.entries(err.response.data).forEach(([key, value]: [string, any]) => {
+            if (Array.isArray(value)) {
+              value.forEach((error: string) => {
+                toast.error(error, {
+                  toastId: key
+                })
+              })
+            } else {
+              if (key === 'detail') {
+                toast.error(value, {
+                  toastId: key
+                })
+              }
+            }
+          })
+        }
         console.error(err)
       })
   }
