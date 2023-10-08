@@ -1,0 +1,21 @@
+/* DatePicker.css */
+
+.date-picker-container {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.date-picker {
+    width: 100%;
+    /* Set the input width to 100% */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.date-picker::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}

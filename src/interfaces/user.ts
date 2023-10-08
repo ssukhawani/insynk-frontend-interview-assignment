@@ -29,9 +29,9 @@ export interface ExpenseUpdate {
   amount: string
   date: string
   description: string
-  type: 'IN' | 'OUT'
-  user: number
-  category: number
+  type: 'IN' | 'OUT' | string
+  user: number | string
+  category: number | string
 }
 
 export interface Expense {

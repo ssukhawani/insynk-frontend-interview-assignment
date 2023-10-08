@@ -25,7 +25,8 @@ const Navbar: React.FC<NavbarProps> = ({ height, button, title, backgroundColor,
 
   const titleStyle: React.CSSProperties = {
     margin: '0',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginLeft: '20px'
   }
 
   return (

@@ -22,17 +22,27 @@ function Layout() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname])
 
+  // Extract the "id" from the route using a regular expression
+  const match = location.pathname.match(/^\/update-expense\/(\d+)$/)
+
+  // Determine the title based on the route
+  let title = routes[location.pathname]
+  if (match != null) {
+    const id = match[1] // Extract the "id" from the match
+    title = `Update Expense - ${id}` // Set custom title for update-expense route
+  }
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', height: '100vh' }}>
       <Paper width={'700px'} height={'100%'}>
         <Navbar
-          title={routes[location.pathname]}
+          title={title}
           user={user}
           button={
             location.pathname === '/expense-tracker' && (
               <Button
                 onClick={() => {
-                  navigate('/add-new-expense')
+                  navigate('/add-expense')
                 }}
                 title={'Add'}
                 style={{

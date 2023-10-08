@@ -104,7 +104,14 @@ export default function ExpenseTracker() {
                     width: '100%',
                     padding: '0.5rem',
                     background: '#f5f5f5',
-                    borderRadius: '0.25rem'
+                    borderRadius: '0.25rem',
+                    cursor: 'pointer',
+                    borderBottom: '1px solid #ccc'
+                  }}
+                  onClick={() => {
+                    navigate(`/update-expense/${expense.id}`, {
+                      state: expense
+                    })
                   }}
                 >
                   <p>{expense.category_data.name}</p>

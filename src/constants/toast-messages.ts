@@ -10,5 +10,9 @@ export const toastMsg: Record<string, string> = {
   CATEGORY_DELETED: 'Category removed successfully..!!',
   CATEGORY_UPDATED: 'Category updated successfully..!!',
   CATEGORY_CREATED: 'Category created successfully..!!',
-  CATEGORY_EMPTY: 'Category can not be empty..'
+  CATEGORY_EMPTY: 'Category can not be empty..',
+  CREATE_CATEGORY: 'Create category first..',
+  ALL_FIELDS_REQUIRED: 'All fields are required..',
+  EXPENSE_CREATED: 'Expense crated successfully..!!',
+  EXPENSE_UPDATED: 'Expense updated successfully..!!'
 }
