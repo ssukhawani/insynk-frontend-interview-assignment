@@ -1,5 +1,5 @@
 export const routes: Record<string, string> = {
-  '/': 'Home',
+  '/': 'Expense Tracker Application',
   '/login': 'Login',
   '/signup': 'Signup',
   '/expense-tracker': 'Expense Tracking',

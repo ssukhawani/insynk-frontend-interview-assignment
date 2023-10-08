@@ -1,31 +1,41 @@
 import React from 'react'
 import Button from '../shared/Button'
-import expenseTrackerGif from '../images/expense_tracker.gif'
+import expenseTrackerAnimation from '../images/expense-animation.json'
 import { useNavigate } from 'react-router-dom'
+import Lottie from 'lottie-react'
 
-export default function PublicPage () {
+export default function PublicPage() {
   const navigate = useNavigate()
   return (
     <div
       style={{
         display: 'grid',
-        height: '97%'
+        height: '98vh',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'auto 1fr auto',
+        gap: '1rem'
       }}
     >
-      <div
+      <header>
+        <div style={{ textAlign: 'center', visibility: 'hidden' }}>
+          <h1>Expense Tracker Application</h1>
+        </div>
+      </header>
+      <main
         style={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          flexDirection: 'column',
+          alignItems: 'center'
         }}
       >
-        <img height={400} width={400} src={expenseTrackerGif} alt='Animated GIF' />
-      </div>
-      <div
+        <Lottie style={{ marginTop: '100px' }} animationData={expenseTrackerAnimation} height={400} width={400} />
+      </main>
+      <footer
         style={{
           display: 'flex',
+          justifyContent: 'center',
           gap: '5px',
-          marginTop: 'auto'
+          padding: '1rem 2rem'
         }}
       >
         <Button
@@ -40,7 +50,7 @@ export default function PublicPage () {
             navigate('/signup')
           }}
         />
-      </div>
+      </footer>
     </div>
   )
 }
