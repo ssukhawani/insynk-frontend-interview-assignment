@@ -55,26 +55,42 @@ export default function Categories() {
     <div
       style={{
         display: 'grid',
-        height: '97%'
+        height: '100vh',
+        gridTemplateColumns: '1fr',
+        gridTemplateRows: 'auto 1fr auto',
+        gap: '1rem'
       }}
     >
-      <div
+      <header>
+        <div style={{ textAlign: 'center' }}>
+          <h1>Category List</h1>
+        </div>
+      </header>
+      <main
         style={{
-          padding: '40px 30px',
-          marginTop: '80px'
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: '2rem',
+          overflow: 'auto',
+          marginTop: '20px'
         }}
       >
         {categories != null && (
-          <ListComponent list={categories} onDelete={handleDelete} fetchData={fetchData} user={user}/>
+          <ListComponent
+            list={categories}
+            onDelete={handleDelete}
+            fetchData={fetchData}
+            user={user}
+          />
         )}
-      </div>
-      <div
+      </main>
+      <footer
         style={{
           display: 'flex',
+          justifyContent: 'center',
           gap: '5px',
-          marginLeft: '5px',
-          marginRight: '5px',
-          marginTop: 'auto'
+          padding: '1rem'
         }}
       >
         <Button
@@ -90,7 +106,7 @@ export default function Categories() {
           }}
           style={styleToApply}
         />
-      </div>
+      </footer>
     </div>
   )
 }

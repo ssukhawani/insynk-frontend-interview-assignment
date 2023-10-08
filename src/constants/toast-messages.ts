@@ -5,6 +5,7 @@ export const toastMsg: Record<string, string> = {
   INVALID_RESPONSE: 'Invalid response..!!',
   SERVER_NOT_RESPONDING: 'Server not responding..!!',
   SUCCESS_SIGNUP: 'Account created successfully..!!',
+  LOGIN_NOW: 'Try login now..!!',
   WILL_CONNECT_U: 'Will contact with you soon...',
   PASSWORD_RESET_DONE: 'Password changed successfully..!!',
   CATEGORY_DELETED: 'Category removed successfully..!!',

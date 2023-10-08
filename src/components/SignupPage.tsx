@@ -6,6 +6,8 @@ import '../css/Signup.css'
 import Button from '../shared/Button'
 import { useNavigate } from 'react-router-dom'
 import CustomLink from '../shared/Link'
+import { toastMsg } from '../constants/toast-messages'
+import { toast } from 'react-toastify'
 
 interface AuthData {
   email: string
@@ -29,6 +31,12 @@ export default function SignupPage () {
 
     signUp(formData)
       .then((response) => {
+        toast.success(toastMsg.SUCCESS_SIGNUP, {
+          toastId: 'signup'
+        })
+        toast.info(toastMsg.LOGIN_NOW, {
+          toastId: 'login-again'
+        })
         navigate({
           pathname: '/login',
           search: `?email=${window.btoa(response.data.email)}`

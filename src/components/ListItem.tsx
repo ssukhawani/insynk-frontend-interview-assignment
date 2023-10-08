@@ -251,7 +251,7 @@ const ListComponent: React.FC<ListComponentProps> = ({
   )
 
   return (
-    <div>
+    <div style={{ marginBottom: '2rem', width: '100%' }}>
       <ul
         style={{
           overflowY: 'scroll',

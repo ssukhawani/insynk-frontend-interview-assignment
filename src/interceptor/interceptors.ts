@@ -54,6 +54,14 @@ const onErrorResponse = async (error: AxiosError | Error): Promise<AxiosError> =
     logOnDev(`🚨 [API] ${method?.toUpperCase()} ${url} | Error ${status} ${message}`)
 
     switch (status) {
+      case 400: {
+        // "Login required"
+        logOnDev('🚨 Bad Request')
+        toast.error('Bad Request', {
+          toastId: 'bad-request'
+        })
+        break
+      }
       case 401: {
         // "Login required"
         logOnDev('🚨 Unauthorised')
