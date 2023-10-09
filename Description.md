@@ -84,7 +84,7 @@ create table expenses (
 
    ```
   
-- ( Time taken - 1:30 hrs - 2:00 hrs)
+### - ( Time taken - 1:30 hrs - 2:00 hrs)
 
 
 C) Next step was to create the rest apis satisfying all the requirements so i went through all the requirements and noted the required api endpoints.
@@ -103,7 +103,7 @@ C) Next step was to create the rest apis satisfying all the requirements so i we
      - create expense
      - update expense
      - delete expense
-- ( Time taken - 30 mins )
+### - ( Time taken - 30 mins )
 
 D) Decided to go with Python Django Rest Framwork for creting quick apis 
   - Django project setup
@@ -134,7 +134,7 @@ D) Decided to go with Python Django Rest Framwork for creting quick apis
  - Created postgres database server locally and added connection to django project
  - Added djoser authentication layer for quick sign up & login flow
  - Created all the models as per the sql schema, using viewsets completed all the endpoints & api-routing.
-- ( Time taken - 3:30 hrs - 4:00 hrs )
+### - ( Time taken - 3:30 hrs - 4:00 hrs )
 
 E) Again went through all the requirements & cross checked if all conditions are satisfying or not , i realised i have to explistly handle categories respective to user so added relation in 
 
@@ -150,4 +150,14 @@ Finally i have conclude the backend rest apis & secured the all endpoints so tha
 
 In short Admin user will have access to all the endpoints. Users will have access to  only expenses & categories that they have created.
 
-- ( Time taken - 3:00 hrs - 4:00 hrs )
+### - ( Time taken - 3:00 hrs - 4:00 hrs )
+
+F)  Now comes the exiting part creating frontend application and making all the functionality live
+  - So i have started with the project scoffholding using create-react-app with typescript template 
+  - Added eslint & pretier configurations folling good practise for the project
+  - Created the basic client routing using react router v6 ( Followed docs as the router v6 is new to me )
+  - Added axis interceptor to intercept request and response object so that i can do necessory client side logging and error handling
+  - Created white-labels for all the routing headers at one place using constants file
+  - Added toast messages to catch errors & success responses 
+
+### - ( Time taken - 2:00 hrs )
