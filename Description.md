@@ -39,13 +39,13 @@ B) Next started with designing the product
        - created_at,
        - updated_at
 
- 3) Identified relation between all the entities and defined the cadinality
+ 3) Identified relation between all the entities and defined the cardinality
      - user - expenses (1:M)
      - expenses - categories (M:1)
      - user - categories (1:M)
  
 
- 4) Finalised the schema 
+ 4) Finalized the schema 
 
    ```sql
    create table user (
@@ -105,7 +105,7 @@ C) Next step was to create the rest apis satisfying all the requirements so i we
      - delete expense
 ### - ( Time taken - 30 mins )
 
-D) Decided to go with Python Django Rest Framwork for creting quick apis 
+D) Decided to go with Python Django Rest Framework for creating quick apis 
   - Django project setup
 
 ```python
@@ -136,15 +136,15 @@ D) Decided to go with Python Django Rest Framwork for creting quick apis
  - Created all the models as per the sql schema, using viewsets completed all the endpoints & api-routing.
 ### - ( Time taken - 3:30 hrs - 4:00 hrs )
 
-E) Again went through all the requirements & cross checked if all conditions are satisfying or not , i realised i have to explistly handle categories respective to user so added relation in 
+E) Again went through all the requirements & cross checked if all conditions are satisfying or not , i realized i have to explicitly handle categories respective to user so added relation in 
 
 - user - categories (1:M)
 
 as well as updated categories schema with user foreign key.
 
-One more challenge i can see was getting the monthly expenses for the user with respecive categories that they either spent or earned.
+One more challenge i can see was getting the monthly expenses for the user with respective categories that they either spent or earned.
 
-To tackle this issue i just have ordered the expenses based on expense date & in frontend i can do some transformation & calculate the commulative sum to get desired list.
+To tackle this issue i just have ordered the expenses based on expense date & in frontend i can do some transformation & calculate the commutative sum to get desired list.
 
 Finally i have conclude the backend rest apis & secured the all endpoints so that only owner of the object can access the endpoints & objects that they have created.
 
@@ -153,10 +153,10 @@ In short Admin user will have access to all the endpoints. Users will have acces
 ### - ( Time taken - 3:00 hrs - 4:00 hrs )
 
 F)  Now comes the exiting part creating frontend application and making all the functionality live
-  - So i have started with the project scoffholding using create-react-app with typescript template 
-  - Added eslint & pretier configurations folling good practise for the project
+  - So i have started with the project scaffolding using create-react-app with typescript template 
+  - Added eslint & prettier configurations following good practice for the project
   - Created the basic client routing using react router v6 ( Followed docs as the router v6 is new to me )
-  - Added axis interceptor to intercept request and response object so that i can do necessory client side logging and error handling
+  - Added axis interceptor to intercept request and response object so that i can do necessary client side logging and error handling
   - Created white-labels for all the routing headers at one place using constants file
   - Added toast messages to catch errors & success responses 
 
