@@ -4,7 +4,7 @@ I like the your website, and i am well aligned with the company ideology
  - I also like to be detail-oriented for whatever i build.
 
 Here is my thought process while Completing this challenge
-## What are the steps you took to approach this assignment & How much time did you spend on each step?
+#### What are the steps you took to approach this assignment & How much time did you spend on each step?
 A) Went through the whole requirements, understood the product, took the decision that i'll make it little bit
   challenging for myself as well, i will create backend along with frontend ( I know its not required but, but i love whatever i try to build...) ( Time taken - 30 mins.)
 
@@ -134,7 +134,7 @@ D) Decided to go with Python Django Rest Framwork for creting quick apis
  - Created postgres database server locally and added connection to django project
  - Added djoser authentication layer for quick sign up & login flow
  - Created all the models as per the sql schema, using viewsets completed all the endpoints & api-routing.
-### - ( Time taken - 3:30 hrs - 4:00 hrs )
+#### - ( Time taken - 3:30 hrs - 4:00 hrs )
 
 E) Again went through all the requirements & cross checked if all conditions are satisfying or not , i realised i have to explistly handle categories respective to user so added relation in 
 
@@ -185,3 +185,5 @@ I) This is Quiet challenging and part i have host backend and frontend as well h
  - The issue was i have added nginx configurations for serving the project on remote vps , but the main user group of nginx had not given privileges to access the static files this was good learning for me.
  - Finally deployed frontend part on vercel
  - Voila ...!!
+
+ #### - ( Time taken - 4:00 hrs - 5:00 hrs )
