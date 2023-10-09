@@ -6,6 +6,9 @@ import { routes } from '../constants/routes'
 import { getLocalStorageItem, setLocalStorageItem } from '../utility/localStorage'
 import { type UserDetails } from '../interfaces/auth'
 import Button from '../shared/Button'
+import { deleteExpense } from '../services/user'
+import { toast } from 'react-toastify'
+import { toastMsg } from '../constants/toast-messages'
 
 function Layout() {
   const location = useLocation()
@@ -29,7 +32,21 @@ function Layout() {
   let title = routes[location.pathname]
   if (match != null) {
     const id = match[1] // Extract the "id" from the match
-    title = `Update Expense - ${id}` // Set custom title for update-expense route
+    title = `Edit expense - ${id}` // Set custom title for update-expense route
+  }
+
+  // Expense remove api integration
+  const handleDelete = (selectedExpenseId: number) => {
+    deleteExpense(selectedExpenseId)
+      .then(() => {
+        toast.info(toastMsg.EXPENSE_REMOVED, {
+          toastId: 'delete-expense'
+        })
+        navigate('/expense-tracker')
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   return (
@@ -39,22 +56,40 @@ function Layout() {
           title={title}
           user={user}
           button={
-            location.pathname === '/expense-tracker' && (
-              <Button
-                onClick={() => {
-                  navigate('/add-expense')
-                }}
-                title={'Add'}
-                style={{
-                  flex: '0.2',
-                  height: '34px',
-                  borderRadius: '5px',
-                  marginLeft: '10px',
-                  background: 'white',
-                  color: 'black'
-                }}
-              />
-            )
+            location.pathname === '/expense-tracker'
+              ? (
+                <Button
+                  onClick={() => {
+                    navigate('/add-expense')
+                  }}
+                  title={'Add'}
+                  style={{
+                    flex: '0.2',
+                    height: '34px',
+                    borderRadius: '5px',
+                    marginLeft: '10px',
+                    background: 'white',
+                    color: 'black'
+                  }}
+                />)
+              : location.pathname.includes('/update-expense')
+                ? (
+                  <Button
+                    onClick={() => {
+                      handleDelete(location.state.id)
+                    }}
+                    title={'Remove'}
+                    style={{
+                      flex: '0.2',
+                      height: '34px',
+                      borderRadius: '5px',
+                      marginLeft: '10px',
+                      background: 'white',
+                      color: 'black'
+                    }}
+                  />)
+                : (
+                  <></>)
           }
         />
 
