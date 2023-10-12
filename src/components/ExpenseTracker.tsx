@@ -89,7 +89,7 @@ export default function ExpenseTracker() {
       >
         {Object.keys(groupedExpenses.monthlyNet).map((month) => (
           <div key={month} style={{ marginBottom: '2rem', width: '100%', textAlign: 'center' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0 20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px' }}>
               <h3 style={{ marginBottom: '10px', marginTop: '10px' }}>{month}</h3>
               <h3>{`${groupedExpenses.monthlyNet[month].toFixed(2)} ₹`}</h3>
             </div>
